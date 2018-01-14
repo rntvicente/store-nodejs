@@ -1,0 +1,4 @@
+{
+    "PORT": 3001,
+    "MONGO_URL": "mongodb://store:store@ds030719.mlab.com:30719/store-curso"
+}

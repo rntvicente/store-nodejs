@@ -1,0 +1,34 @@
+{
+    "title": "products",
+    "type": "object",
+    "properties:": {
+        "title": {
+            "type": "String",
+            "trim": true
+        },
+        "slug": {
+            "type": "String",
+            "trim": true,
+            "index": true,
+            "unique": true
+        },
+        "description": {
+            "type": "String"
+        },
+        "price": {
+            "type": "Number"
+        },
+        "active": {
+            "type": "Boolean",
+            "default": true
+        },
+        "tags": [{
+            "type": "String"
+        }],
+        "image": {
+            "type": "String",
+            "trim": true
+        }
+    },
+    "required": ["title", "slug", "description", "price", "active", "tags"]
+}

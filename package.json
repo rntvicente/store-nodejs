@@ -1,0 +1,26 @@
+{
+  "name": "store-nodejs",
+  "version": "1.0.0",
+  "description": "store",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/server.js"
+  },
+  "author": "Renato Vicente",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "http": "0.0.0",
+    "mongodb": "^2.2.33",
+    "nconf": "^0.10.0",
+    "normalize-port": "^1.0.0",
+    "to": "^0.2.9",
+    "tv4": "^1.3.0",
+    "update": "^0.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.11"
+  }
+}
