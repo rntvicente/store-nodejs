@@ -1,7 +1,7 @@
 'use strict'
 
 const mongo = require('mongodb');
-const productModel = require('../models/product-model');
+const productRepository = require('../repositories/product-repository');
 const validationContract = require("../validation/fluent-validation");
 
 const projection = {
@@ -31,7 +31,7 @@ const getBySlug = (req, res, next) => {
     query.active = true;
     query.slug = req.params.slug;
 
-    productModel.findOne(query, projection, (err, product) => {
+    productRepository.findOne(query, projection, (err, product) => {
         if (err) {
             return res.status(500).send();
         }
@@ -43,7 +43,7 @@ const getById = (req, res, next) => {
     const query = {};
     query._id = new mongo.ObjectID(req.params.id);
 
-    productModel.findOne(query, projection, (err, product) => {
+    productRepository.findOne(query, projection, (err, product) => {
         if (err) {
             return res.status(500).send();
         }
@@ -57,7 +57,7 @@ const getByTags = (req, res, next) => {
     query.active = true;
     query.tags = req.params.tag;
 
-    productModel.find(query, projection, (err, product) => {
+    productRepository.find(query, projection, (err, product) => {
         if (err) {
             return res.status(500).send();
         }
@@ -78,7 +78,7 @@ const post = (req, res, next) => {
 
     const body = req.body;
 
-    productModel.insert(body, (err, product) => {
+    productRepository.insert(body, (err, product) => {
         if (err) {
             return res.status(400).send({
                 message: "Falha ao cadastrar produto: ",
@@ -102,7 +102,7 @@ const put = (req, res, next) => {
 
     query._id = new mongo.ObjectID(req.params.id);
 
-    productModel.findOneAndUpdate(query, set, (err, product) => {
+    productRepository.findOneAndUpdate(query, set, (err, product) => {
         if (err) {
             console.log("Falha ao atualizar produto: %s", err);
             return res.status(400).send({
@@ -118,7 +118,7 @@ const remove = (req, res, next) => {
     const query = {};
     query._id = new mongo.ObjectID(req.body.id);
 
-    productModel.findOneAndDelete(query, (err, result) => {
+    productRepository.findOneAndDelete(query, (err, result) => {
         if (err) {
             console.log("Falha ao excluir produto: %s", err);
             return res.status(400).send({
