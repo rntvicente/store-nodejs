@@ -20,6 +20,11 @@ database.connect(config.get('MONGO_URL'), (err) => {
   }
 });
 
+// Carrega os Models
+const Order = require('./models/schema/order');
+const Product = require('./models/schema/products-schema.json');
+const Customer = require('./models/schema/customers-schema.json');
+
 // arquivos de rotas
 const routeIndex = require('./routes/index-route');
 const routeProduct = require('./routes/products-route');

@@ -1,0 +1,19 @@
+{
+    "title": "customers",
+    "type": "object",
+    "properties:": {
+        "name": {
+            "type": "String",
+            "trim": true
+        },
+        "email": {
+            "type": "String",
+            "trim": true
+        },
+        "password": {
+            "type": "String",
+            "required": true
+        }
+    },
+    "required": ["name","email", "password"]
+}
