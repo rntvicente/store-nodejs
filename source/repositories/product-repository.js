@@ -9,7 +9,15 @@ const find = (query, projection, callback) => {
     });
 };
 
-const findOne = (query, projection, callback) => {
+const findAsync = async(query, projection) => {
+    const ret = await db.getCollection('products')
+        .find(query, projection)
+        .toArray();
+
+        return ret;
+};
+
+const findOne = (query, projection) => {
     db.getCollection('products').findOne(query, projection, (err, product) => {
         if (err) {
             return callback(err);
@@ -58,4 +66,4 @@ const findOneAndDelete = (query, body, callback) => {
     });
 };
 
-module.exports = { insert, find, findOne, findOneAndUpdate, findOneAndDelete };
+module.exports = { insert, find, findAsync, findOne, findOneAndUpdate, findOneAndDelete };

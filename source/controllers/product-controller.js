@@ -14,15 +14,28 @@ const projection = {
 
 const get = (req, res, next) => {
     const query = {};
-
     query.active = true;
 
-    productModel.find(query, projection, (err, products) => {
+    productRepository.find(query, projection, (err, products) => {
         if (err) {
             return res.status(500).send();
         }
         res.status(200).send(products);
     });
+};
+
+const getAsync = async(req, res, next) => {
+    const query = {}
+    query.active = true;
+
+    try {
+        const products = await productRepository
+            .findAsync(query, projection);
+
+        return res.status(200).send(products);
+    } catch (error) {
+        return res.status(500).send(error);
+    }
 };
 
 const getBySlug = (req, res, next) => {
@@ -130,4 +143,4 @@ const remove = (req, res, next) => {
     });
 };
 
-module.exports = { get, getByTags, getBySlug, getById, post, put, remove };
+module.exports = { get, getAsync, getByTags, getBySlug, getById, post, put, remove };
