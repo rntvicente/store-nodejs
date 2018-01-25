@@ -4,6 +4,7 @@
   "description": "store",
   "main": "index.js",
   "scripts": {
+    "eslint": "eslint source/* index.js",
     "start": "node ./bin/server.js"
   },
   "author": "Renato Vicente",
@@ -12,6 +13,7 @@
     "body-parser": "^1.18.2",
     "debug": "^3.1.0",
     "express": "^4.16.2",
+    "guid": "0.0.12",
     "http": "0.0.0",
     "mongodb": "^2.2.33",
     "mongoose": "^5.0.1",
@@ -22,6 +24,7 @@
     "update": "^0.7.4"
   },
   "devDependencies": {
+    "eslint": "^4.16.0",
     "nodemon": "^1.14.11"
   }
 }

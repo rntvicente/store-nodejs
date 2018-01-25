@@ -32,8 +32,8 @@ ValidationContract.prototype.isEmail = (value, message) => {
         errors.push({ message: message });
 }
 
-ValidationContract.prototype.errors = () => { 
-    return errors; 
+ValidationContract.prototype.errors = () => {
+    return errors;
 }
 
 ValidationContract.prototype.clear = () => {

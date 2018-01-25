@@ -6,7 +6,7 @@ const debug = require('debug')('nodestr:server');
 const normalizePort = require('normalize-port');
 const config = require('../source/commons/conf');
 
-const port = normalizePort(config.get('PORT') || '3000');
+const port = normalizePort(config.get('PORT'));
 
 app.set('port', port);
 

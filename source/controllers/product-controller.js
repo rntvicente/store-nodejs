@@ -24,7 +24,7 @@ const get = (req, res, next) => {
     });
 };
 
-const getAsync = async(req, res, next) => {
+const getAsync = async (req, res, next) => {
     const query = {}
     query.active = true;
 
@@ -91,9 +91,9 @@ const post = (req, res, next) => {
 
     const body = req.body;
 
-    productRepository.insert(body, (err, product) => {
+    productRepository.insert(body, (err) => {
         if (err) {
-            return res.status(400).send({
+            return res.status(500).send({
                 message: "Falha ao cadastrar produto: ",
                 data: err.message
             });
@@ -118,7 +118,7 @@ const put = (req, res, next) => {
     productRepository.findOneAndUpdate(query, set, (err, product) => {
         if (err) {
             console.log("Falha ao atualizar produto: %s", err);
-            return res.status(400).send({
+            return res.status(500).send({
                 message: "Falha ao atualizar produto: ",
                 data: err.message
             });
@@ -134,7 +134,7 @@ const remove = (req, res, next) => {
     productRepository.findOneAndDelete(query, (err, result) => {
         if (err) {
             console.log("Falha ao excluir produto: %s", err);
-            return res.status(400).send({
+            return res.status(500).send({
                 message: "Falha ao excluir produto: ",
                 data: err.message
             });
