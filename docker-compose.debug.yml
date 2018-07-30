@@ -1,0 +1,12 @@
+version: '2.1'
+
+services:
+  store-nodejs:
+    image: store-nodejs
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3006:3006
+      - 9229:9229
+    command: node --inspect=0.0.0.0:9229 ./bin/server.js

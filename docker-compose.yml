@@ -1,0 +1,10 @@
+version: '2.1'
+
+services:
+  store-nodejs:
+    image: store-nodejs
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3006:3006
