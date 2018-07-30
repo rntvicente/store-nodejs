@@ -2,9 +2,9 @@
   "name": "store-nodejs",
   "version": "1.0.0",
   "description": "store",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "eslint": "eslint source/* index.js",
+    "eslint": "eslint source/*",
     "start": "node ./bin/server.js"
   },
   "author": "Renato Vicente",
@@ -24,7 +24,6 @@
     "update": "^0.7.4"
   },
   "devDependencies": {
-    "eslint": "^4.16.0",
-    "nodemon": "^1.14.11"
+    "eslint": "^4.16.0"
   }
 }
