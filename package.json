@@ -7,6 +7,9 @@
     "eslint": "eslint source/*",
     "start": "node ./bin/server.js"
   },
+  "engines": {
+    "node": "8.11.3"
+  },
   "author": "Renato Vicente",
   "license": "ISC",
   "dependencies": {
@@ -15,8 +18,8 @@
     "express": "^4.16.2",
     "guid": "0.0.12",
     "http": "0.0.0",
+    "moment": "^2.22.2",
     "mongodb": "^2.2.33",
-    "mongoose": "^5.0.1",
     "nconf": "^0.10.0",
     "normalize-port": "^1.0.0",
     "to": "^0.2.9",

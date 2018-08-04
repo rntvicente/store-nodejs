@@ -1,19 +1,17 @@
 'use strict';
-const mongoose = require('mongoose');
-const Order = mongoose.model('Order');
+const db = require('../commons/db');
 
-const getAll = async (query) => {
-    var res = await Order
-        .find(query, 'number status customer items')
-        .populate('customer', 'name')
-        .populate('items.product', 'title');
-        
-    return res;
+const getAllAsync = async (query, projection) => {
+    const ret = await db.getCollection('orders')
+        .find(query, projection)
+        .toArray();
+
+        return ret;
 }
 
 const create = async (data) => {
-    var order = new Order(data);
-    await order.save();
+    await db.getCollection('orders')
+        .insert(data);
 }
 
-module.exports = { getAll, create };
+module.exports = { getAllAsync, create };
