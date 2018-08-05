@@ -1,6 +1,6 @@
 const guid = require('guid');
 const orderRepository = require('../repositories/order-repository');
-const { httpStatusCode, statusOrders } = require('../commons/utils')
+const { httpStatusCode, statusOrders } = require('../commons/utils');
 
 const create = async (req, res) => {
   const order = {};

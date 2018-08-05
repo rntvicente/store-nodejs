@@ -18,12 +18,13 @@ const get = (req, res) => {
     if (err) {
       return res.status(500).send();
     }
-    res.status(200).send(products);
+
+    return res.status(200).send(products);
   });
 };
 
 const getAsync = async (req, res) => {
-  const query = {}
+  const query = {};
   query.active = true;
 
   try {
@@ -46,7 +47,8 @@ const getBySlug = (req, res) => {
     if (err) {
       return res.status(500).send();
     }
-    res.status(200).send(product);
+
+    return res.status(200).send(product);
   });
 };
 
