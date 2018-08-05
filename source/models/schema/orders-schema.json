@@ -1,0 +1,29 @@
+{
+    "title": "orders",
+    "customer": {
+        "type": "String"
+    },
+    "number": {
+        "type": "String"
+    },
+    "createDate": {
+        "type": "String",
+        "pattern": "^\\d{4}\\-(0?[1-9]|1[012])\\-(0?[1-9]|[12][0-9]|3[01])$"
+    },
+    "status": {
+        "type": "String"
+    },
+    "items": [{
+        "required": ["quantity", "price", "product"],
+        "quantity": {
+            "type": "Number"
+        },
+        "price": {
+            "type": "Number"
+        },
+        "product": {
+            "type": "String"
+        }
+    }],
+    "required": ["customer", "items"]
+}
