@@ -20,11 +20,11 @@ const create = async (req, res) => {
 
     await customerRepository.create(customer);
 
-    res.status(201).send({
+    return res.status(201).send({
       message: 'Cliente cadastrado com sucesso.',
     });
   } catch (err) {
-    res.status(500).send({
+    return res.status(500).send({
       message: 'Falha ao cadastrar cliente: ',
       data: err.message,
     });
