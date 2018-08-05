@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
 
 const Database = {};
 const collections = [];
@@ -11,7 +11,7 @@ Database.connect = (uri, callback) => {
     if (err) {
       console.log('Database falha na conexão. - ', err.message);
     } else {
-        console.log('Database conectada.');
+      console.log('Database conectada.');
       db = _db;
     }
     return callback(err, db);
@@ -30,12 +30,12 @@ Database.getCollection = (collectionName) => {
 };
 
 Database.close = (callback) => {
-  logger.debug('Database tentando desconectar');
+  console.log('Database tentando desconectar');
 
   if (db) {
     db.close((err) => {
       if (err) {
-        console.log('Error ao fechar database');
+        console.error('Error ao fechar database');
       } else {
         console.log('Database disconectada');
       }
