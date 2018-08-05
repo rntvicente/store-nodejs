@@ -1,4 +1,5 @@
 const mongo = require('mongodb');
+
 const ValidationContract = require('../validation/fluent-validation');
 const productRepository = require('../repositories/product-repository');
 
@@ -74,7 +75,8 @@ const getByTags = (req, res) => {
     if (err) {
       return res.status(500).send();
     }
-    res.status(200).send(product);
+
+    return res.status(200).send(product);
   });
 };
 
@@ -98,7 +100,8 @@ const post = (req, res) => {
         data: err.message,
       });
     }
-    res.status(201).send({ message: 'Produto cadastrado com sucesso.' });
+
+    return res.status(201).send({ message: 'Produto cadastrado com sucesso.' });
   });
 };
 
@@ -109,8 +112,8 @@ const put = (req, res) => {
       title: req.params.title,
       description: req.params.description,
       price: req.params.price,
-      slug: req.params.slug
-    }
+      slug: req.params.slug,
+    },
   };
 
   query._id = new mongo.ObjectID(req.params.id);
@@ -124,6 +127,7 @@ const put = (req, res) => {
         data: err.message,
       });
     }
+
     return res.status(201)
       .send({ message: 'Produto atualizado com sucesso.', data: product });
   });
@@ -136,13 +140,17 @@ const remove = (req, res) => {
   productRepository.findOneAndDelete(query, (err, product) => {
     if (err) {
       console.log('Falha ao excluir produto: %s', err);
+
       return res.status(500).send({
         message: 'Falha ao excluir produto: ',
-        data: err.message
+        data: err.message,
       });
     }
     return res.status(201)
-      .send({ message: 'Produto excluido com sucesso.', data: product });
+      .send({
+        message: 'Produto excluido com sucesso.',
+        data: product,
+      });
   });
 };
 

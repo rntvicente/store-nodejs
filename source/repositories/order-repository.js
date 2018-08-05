@@ -6,7 +6,7 @@ const getAllAsync = async (query, projection) => {
     .toArray();
 
   return ret;
-}
+};
 
 const create = async (data) => {
   await db.getCollection('orders')

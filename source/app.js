@@ -7,10 +7,8 @@ const database = require('./commons/db');
 
 app.set('json spaces', 2);
 
-/* converte o conteudo para um json */
 app.use(bodyParse.json());
 
-/* converte as url */ 
 app.use(bodyParse.urlencoded({
   extended: false,
 }));
@@ -22,7 +20,6 @@ database.connect(config.get('MONGO_URL'), (err) => {
   }
 });
 
-/* arquivos de rotas */
 const routeIndex = require('./routes/index-route');
 const routeProduct = require('./routes/products-route');
 const routeCustomer = require('./routes/customer-route');
