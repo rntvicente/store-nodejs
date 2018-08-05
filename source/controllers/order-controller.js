@@ -1,27 +1,25 @@
 const guid = require('guid');
-const moment = require('moment');
 const orderRepository = require('../repositories/order-repository');
 const { httpStatusCode, statusOrders } = require('../commons/utils')
 
 const create = async (req, res, next) => {
     console.log('congtroller');
     const order = {};
+    const dateNow = new Date();
 
     order.number = guid.raw().substring(0, 6);
     order.customer = req.body.customer;
-    order.createAt = moment().date();
+    order.createAt = dateNow;
     order.items = req.body.items;
     order.status = [{
         status: statusOrders.create,
-        timestamp: moment().date()
+        timestamp: dateNow
     }];
 
-    console.log(JSON.stringify(order, null, 2))
     try {
         await orderRepository.create(order);
 
-        console.log('passou create');
-        res.status(httpStatusCode.accept).send({
+        return res.status(httpStatusCode.accept).send({
             message: "Pedido cadastrado com sucesso."
         });
     } catch (err) {
