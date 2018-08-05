@@ -6,6 +6,7 @@ const app = require('../source/app');
 const config = require('../source/commons/conf');
 
 const port = normalizePort(config.get('PORT'));
+const server = http.createServer(app);
 
 app.set('port', port);
 
@@ -41,7 +42,6 @@ function onListening() {
   debug(`Listening on ${bind}`);
 }
 
-const server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
