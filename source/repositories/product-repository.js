@@ -42,7 +42,7 @@ const findOneAndUpdate = (query, body, callback) => {
       description: body.description,
       price: body.price,
       slug: body.slug,
-    }
+    },
   };
 
   db.getCollection('products').findOneAndUpdate(query, set, (err, result) => {
